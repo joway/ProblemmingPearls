@@ -1,0 +1,181 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+    
+  第二章 : 啊哈, 算法 - 
+  
+  </title>
+ <meta name="description" content="">
+ <link href="atom.xml" rel="alternate" title="" type="application/atom+xml">
+    <link rel="stylesheet" href="asset/css/foundation.min.css" />
+    <link rel="stylesheet" href="asset/css/docs.css" />
+
+    <script src="asset/js/vendor/modernizr.js"></script>
+    <script src="asset/js/vendor/jquery.js"></script>
+    <script src="asset/highlightjs/highlight.pack.js"></script>
+    <link href="asset/highlightjs/styles/github.css" media="screen, projection" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="asset/css/main.css" />
+    <script>hljs.initHighlightingOnLoad();</script>
+    
+  </head>
+  <body class="antialiased hide-extras">
+    
+    <div class="marketing off-canvas-wrap" data-offcanvas>
+      <div class="inner-wrap">
+
+
+<nav class="top-bar docs-bar hide-for-small" data-topbar>
+
+<div id="header">
+    <h1><a href="index.html"></a></h1>
+</div>
+
+</nav>
+        <nav class="tab-bar show-for-small">
+  <a href="javascript:void(0)" class="left-off-canvas-toggle menu-icon">
+    <span> &nbsp; </span>
+  </a>
+</nav>
+
+<aside class="left-off-canvas-menu">
+      <ul class="off-canvas-list">
+      <li><a href="index.html">Home</a></li>
+      
+        <li class="divider"></li>
+        <li><label>Part 1</label></li>
+
+          
+            <li><a title="第二章 : 啊哈, 算法" href="chapter2.html">第二章 : 啊哈, 算法</a></li>
+          
+            <li><a title="第一章 : 开篇" href="chapter1.html">第一章 : 开篇</a></li>
+          
+
+      
+      </ul>
+    </aside>
+
+<a class="exit-off-canvas" href="#"></a>
+
+        <section id="main-content" role="main" class="scroll-container">
+
+          <div class="row">
+            <div class="large-3 medium-3 columns">
+              <div class="hide-for-small">
+                <div class="sidebar">
+                <nav>
+                  <ul id="side-nav" class="side-nav">
+
+                    
+                      <li class="side-title"><span>Part 1</span></li>
+                      <ul class="ul-reverser">
+                        
+                          <li><a title="第二章 : 啊哈, 算法" href="chapter2.html">第二章 : 啊哈, 算法</a></li>
+                        
+                          <li><a title="第一章 : 开篇" href="chapter1.html">第一章 : 开篇</a></li>
+                        
+                      </ul>
+                    
+                  </ul>
+                </nav>
+                </div>
+              </div>
+            </div>
+            <div class="large-9 medium-9 columns">
+
+ <div class="markdown-body">
+<h1>第二章 : 啊哈, 算法</h1>
+
+<h2 id="toc_0">大量数据中找不存在的数</h2>
+
+<h3 id="toc_1">问题</h3>
+
+<p>一个 40 亿个随机排列的32位整数的顺序文件 , 找出一个不在文件中的32位整数</p>
+
+<h3 id="toc_2">解法</h3>
+
+<p>利用二分查找加文件 , 第一遍遍历整个文件 , 按第1位是否为 0写入两组文件, 选数据量小的那组文件进行第二次遍历 , 依此类推</p>
+
+<h2 id="toc_3">数组循环左移</h2>
+
+<h3 id="toc_4">问题</h3>
+
+<p>将一个 n 元一维向量向左旋转 i 个位置 。例如 , 当 n=8 且 i=3 时, 向量 abcdefgh 旋转为 defghabc 。</p>
+
+<h3 id="toc_5">解法</h3>
+
+<p>如果采用记录一个中间数组的方式进行数组拼接, 当 i 很大时候会出现内存不够的情况 。这里可以把一个循环左移的问题 , 转换为一个 翻转数组的问题 。翻转一个数组能够在 n/2 次循环内完成, 完成一次左移 i 位操作需要翻转 3 次 : 即 reverse(arr[:i]), reverse(arr[:i]), reverse(a[:]) , 这样便能实现整个移位过程。</p>
+
+
+</div>
+
+<br /><br />
+<hr />
+
+<div class="row clearfix">
+  <div class="large-6 columns">
+	<div class="text-left" style="padding:15px 0px;">
+		
+	        <a href="chapter1.html"  title="Previous Post: 第一章 : 开篇">&laquo; 第一章 : 开篇</a>
+	    
+	</div>
+  </div>
+  <div class="large-6 columns">
+	<div class="text-right" style="padding:15px 0px;">
+		
+	</div>
+  </div>
+</div>
+
+<div class="row">
+<div style="padding:0px 0.93em;" class="share-comments">
+
+</div>
+</div>
+<script type="text/javascript">
+	$(function(){
+		var currentURL = 'chapter2.html';
+		$('#side-nav a').each(function(){
+			if($(this).attr('href') == currentURL){
+				$(this).parent().addClass('active');
+			}
+		});
+	});
+</script>  
+</div></div>
+
+
+<div class="page-bottom">
+  <div class="row">
+  <hr />
+  <div class="small-9 columns">
+  <p class="copyright">Copyright &copy; 2015
+Powered by <a target="_blank" href="http://www.mweb.im">MWeb</a>,&nbsp; 
+Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>.</p>
+  </div>
+  <div class="small-3 columns">
+  <p class="copyright text-right"><a href="#header">TOP</a></p>
+  </div>
+   
+  </div>
+</div>
+
+        </section>
+      </div>
+    </div>
+    
+    
+    <script src="asset/js/foundation.min.js"></script>
+    <script src="asset/js/foundation/foundation.offcanvas.js"></script>
+    <script>
+      $(document).foundation();
+
+     
+    </script>
+    
+
+
+  </body>
+</html>

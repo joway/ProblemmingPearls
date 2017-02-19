@@ -1,0 +1,179 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+  
+  
+  
+  </title>
+ <meta name="description" content="">
+ <link href="atom.xml" rel="alternate" title="" type="application/atom+xml">
+    <link rel="stylesheet" href="asset/css/foundation.min.css" />
+    <link rel="stylesheet" href="asset/css/docs.css" />
+
+    <script src="asset/js/vendor/modernizr.js"></script>
+    <script src="asset/js/vendor/jquery.js"></script>
+    <script src="asset/highlightjs/highlight.pack.js"></script>
+    <link href="asset/highlightjs/styles/github.css" media="screen, projection" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="asset/css/main.css" />
+    <script>hljs.initHighlightingOnLoad();</script>
+    
+  </head>
+  <body class="antialiased hide-extras">
+    
+    <div class="marketing off-canvas-wrap" data-offcanvas>
+      <div class="inner-wrap">
+
+
+<nav class="top-bar docs-bar hide-for-small" data-topbar>
+
+<div id="header">
+    <h1><a href="index.html"></a></h1>
+</div>
+
+</nav>
+        <nav class="tab-bar show-for-small">
+  <a href="javascript:void(0)" class="left-off-canvas-toggle menu-icon">
+    <span> &nbsp; </span>
+  </a>
+</nav>
+
+<aside class="left-off-canvas-menu">
+      <ul class="off-canvas-list">
+      <li><a href="index.html">Home</a></li>
+      
+        <li class="divider"></li>
+        <li><label>Part 1</label></li>
+
+          
+            <li><a title="第二章 : 啊哈, 算法" href="chapter2.html">第二章 : 啊哈, 算法</a></li>
+          
+            <li><a title="第一章 : 开篇" href="chapter1.html">第一章 : 开篇</a></li>
+          
+
+      
+      </ul>
+    </aside>
+
+<a class="exit-off-canvas" href="#"></a>
+
+        <section id="main-content" role="main" class="scroll-container">
+
+          <div class="row">
+            <div class="large-3 medium-3 columns">
+              <div class="hide-for-small">
+                <div class="sidebar">
+                <nav>
+                  <ul id="side-nav" class="side-nav">
+
+                    
+                      <li class="side-title"><span>Part 1</span></li>
+                      <ul class="ul-reverser">
+                        
+                          <li><a title="第二章 : 啊哈, 算法" href="chapter2.html">第二章 : 啊哈, 算法</a></li>
+                        
+                          <li><a title="第一章 : 开篇" href="chapter1.html">第一章 : 开篇</a></li>
+                        
+                      </ul>
+                    
+                  </ul>
+                </nav>
+                </div>
+              </div>
+            </div>
+            <div class="large-9 medium-9 columns">
+
+ 
+
+
+	
+		<div class="markdown-body">
+		<h1>第一章 : 开篇</h1>
+
+		<h2 id="toc_0">有限资源下进行大批量不重复数字排序</h2>
+
+<h3 id="toc_1">解释</h3>
+
+<p>一个有限定义域内的稠密集合 , 其中每个元素最多出现一次 , 且没有其它任何数据有该元素相关联, 则可以使用 BitMap 对其进行排序。</p>
+
+<h3 id="toc_2">用法</h3>
+
+<h4 id="toc_3">问题</h4>
+
+<p>一个文件中包含 n 个不重复的正整数 , 对其进行排序 , 并且严格限定内存大小 。</p>
+
+<h4 id="toc_4">解法</h4>
+
+<ol>
+<li>基于磁盘的归并排序 , 生成若干个中间文件, 把原本放在内存中的数据都持续化存储在磁盘上。归并时候直接拿文件进行 append 。</li>
+<li>多趟读取文件: 例如 一共10000个数字 , 第一趟遍历整个文件取得 0 ~ 250 之间的数字读进内存并排序, 第二趟 250 ~ 500 之间, 以此类推 , 一共有40趟 , 以时间换取了空间。</li>
+<li>位图实现 : 使用 n 位二进制数 , 当且仅当整数 i 存在文件中时, 第 i 位二进制为 1 。第一遍遍历文件生成位图 , 第二遍遍历位图得到排序结果。位图所占的内存大小仅为 n/8 字节 (int bitmap[] , 每个 int 4 字节, 32 bit , 能代表32个数字的存在与否情况 )。</li>
+</ol>
+
+<h4 id="toc_5">位图数据结构实现</h4>
+
+<pre><code>#define BITSPERWORD 32
+#define SHIFT 5
+#define MASK 0x1F
+#define N 10000000
+
+int bitmap[1 + N/BITSPERWORD];
+
+void set(int i){
+    bitmap[i &gt;&gt; SHIFT] |= (1 &lt;&lt; (i &amp; MASK));
+}
+void clr(int i){
+    bitmap[i &gt;&gt; SHIFT] &amp;= ~(1 &lt;&lt; (i &amp; MASK));
+}
+
+int test(int i){
+    return bitmap[i &gt;&gt; SHIFT] &amp; (1 &lt;&lt; (i &amp; MASK));
+}
+</code></pre>
+
+
+		</div>
+	
+
+ 
+	
+
+  
+  
+</div></div>
+
+
+<div class="page-bottom">
+  <div class="row">
+  <hr />
+  <div class="small-9 columns">
+  <p class="copyright">Copyright &copy; 2015
+Powered by <a target="_blank" href="http://www.mweb.im">MWeb</a>,&nbsp; 
+Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>.</p>
+  </div>
+  <div class="small-3 columns">
+  <p class="copyright text-right"><a href="#header">TOP</a></p>
+  </div>
+   
+  </div>
+</div>
+
+        </section>
+      </div>
+    </div>
+    
+    
+    <script src="asset/js/foundation.min.js"></script>
+    <script src="asset/js/foundation/foundation.offcanvas.js"></script>
+    <script>
+      $(document).foundation();
+
+     
+    </script>
+    
+
+
+  </body>
+</html>

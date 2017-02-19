@@ -1,0 +1,1 @@
+/Library/Developer/CommandLineTools/usr/bin/cc  -g -Wl,-search_paths_first -Wl,-headerpad_max_install_names  CMakeFiles/ProblemmingPearls.dir/main.c.o CMakeFiles/ProblemmingPearls.dir/chapter1/bitmap.c.o CMakeFiles/ProblemmingPearls.dir/utils/translate.c.o CMakeFiles/ProblemmingPearls.dir/utils/io.c.o CMakeFiles/ProblemmingPearls.dir/chapter2/shift.c.o  -o ProblemmingPearls 
